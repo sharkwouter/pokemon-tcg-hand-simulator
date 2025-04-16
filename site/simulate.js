@@ -48,8 +48,6 @@ function simulate() {
   resultdiv.hidden = false;
 
   let cards = get_cards();
-
-
   if (cards.length === deck_size) {
     let hand = generate_hand(cards);
 
