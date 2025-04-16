@@ -1,5 +1,6 @@
 const hand_size = 6;
 const deck_size = 60;
+const prizes = 6;
 
 function get_cards() {
   let cards = new Array();
@@ -25,7 +26,7 @@ function get_random_card_number() {
 
 function generate_hand(cards) {
   let numbers = new Array();
-  for (let i = 0; i < hand_size + 1; i++) {
+  for (let i = 0; i < hand_size + prizes + 1; i++) {
     let number = get_random_card_number();
     while (numbers.includes(number)) {
       number = get_random_card_number();
@@ -33,7 +34,7 @@ function generate_hand(cards) {
     numbers.push(number);
   }
   let hand = new Array();
-  for (let i = 0; i < hand_size + 1; i++) {
+  for (let i = 0; i < hand_size + prizes + 1; i++) {
     hand.push(cards[numbers[i]]);
   }
   return hand;
@@ -43,8 +44,10 @@ function simulate() {
   let resultdiv = document.getElementById("result");
   let handdiv = document.getElementById("hand");
   let topdeckdiv = document.getElementById("topdeck");
+  let prizesdiv = document.getElementById("prizes");
   handdiv.innerHTML = "";
   topdeckdiv.innerHTML = "";
+  prizesdiv.innerHTML = "";
   resultdiv.hidden = false;
 
   let cards = get_cards();
@@ -59,11 +62,18 @@ function simulate() {
     }
     handdiv.appendChild(list);
 
-    topdeck.innerHTML = hand[hand_size];
-    handdiv.appendChild(top_deck);
+    topdeckdiv.innerHTML = hand[hand_size + prizes];
 
+    let priceslist = document.createElement("ol");
+    for (let i = hand_size; i < hand_size + prizes; i++) {
+      let entry = document.createElement("li");
+      entry.innerHTML = hand[i];
+      priceslist.appendChild(entry);
+    }
+    prizesdiv.appendChild(priceslist);
   } else {
     handdiv.innerHTML = "Not a " + deck_size +" card deck";
     topdeckdiv.innerHTML = "-";
+    prizesdiv.innerHTML = "-";
   }
 }
