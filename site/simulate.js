@@ -72,7 +72,7 @@ function simulate() {
     }
     prizesdiv.appendChild(prizeslist);
   } else {
-    handdiv.innerHTML = "Not a " + deck_size +" card deck";
+    handdiv.innerHTML = "<p>Not a " + deck_size +" card deck</p>";
     topdeckdiv.innerHTML = "-";
     prizesdiv.innerHTML = "-";
   }
