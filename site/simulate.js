@@ -64,13 +64,13 @@ function simulate() {
 
     topdeckdiv.innerHTML = hand[hand_size + prizes];
 
-    let priceslist = document.createElement("ol");
+    let prizeslist = document.createElement("ol");
     for (let i = hand_size; i < hand_size + prizes; i++) {
       let entry = document.createElement("li");
       entry.innerHTML = hand[i];
-      priceslist.appendChild(entry);
+      prizeslist.appendChild(entry);
     }
-    prizesdiv.appendChild(priceslist);
+    prizesdiv.appendChild(prizeslist);
   } else {
     handdiv.innerHTML = "Not a " + deck_size +" card deck";
     topdeckdiv.innerHTML = "-";
